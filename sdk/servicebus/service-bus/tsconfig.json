@@ -39,8 +39,5 @@
     "./samples/**/*.ts",
     "./test/perf/azure-sb-package/*.ts"
   ],
-  "include": [
-    "./src/**/*.ts",
-    "./test/**/*.ts"
-  ]
+  "include": ["./src/**/*.ts", "./test/**/*.ts"]
 }

@@ -51,7 +51,7 @@
     "@types/mocha": "^5.2.5",
     "@types/node": "^8.0.0",
     "@types/ws": "^6.0.1",
-    "@typescript-eslint/eslint-plugin": "~1.9.0",
+    "@typescript-eslint/eslint-plugin": "^1.10.2",
     "@typescript-eslint/parser": "^1.7.0",
     "assert": "^1.4.1",
     "buffer": "^5.2.1",
@@ -63,9 +63,10 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-detailed-reporter": "^0.8.0",
+    "eslint-plugin-azure": "file:../../../../eslint-plugin-azure/eslint-plugin-azure-0.0.0.tgz",
     "eslint-plugin-no-null": "^1.0.2",
     "eslint-plugin-no-only-tests": "^2.3.0",
-    "eslint-plugin-promise": "^4.1.1",    
+    "eslint-plugin-promise": "^4.1.1",
     "https-proxy-agent": "^2.2.1",
     "karma": "^4.0.1",
     "karma-chrome-launcher": "^2.2.0",
@@ -125,7 +126,8 @@
     "integration-test:browser": "karma start --single-run",
     "integration-test:node": "mocha -t 120000 test-dist/index.js --reporter mocha-multi --reporter-options spec=-,mocha-junit-reporter=-",
     "integration-test": "npm run integration-test:node && npm run integration-test:browser",
-    "lint": "eslint -c ../../.eslintrc.json src test samples --ext .ts -f node_modules/eslint-detailed-reporter/lib/detailed.js -o service-bus-lintReport.html || exit 0",
+    "lint": "eslint -c ../../.eslintrc.json src test samples ./package.json ./tsconfig.json --ext .ts .json -f node_modules/eslint-detailed-reporter/lib/detailed.js -o service-bus-lintReport.html || exit 0",
+    "lint-test": "eslint *.json",
     "lint-fix": "eslint -c ../../.eslintrc.json src test samples --ext .ts --fix --fix-type [problem,suggestion]",
     "pack": "npm pack 2>&1",
     "prebuild": "npm run clean",
@@ -134,7 +136,8 @@
     "test": "npm run test:node && npm run test:browser",
     "unit-test:browser": "echo skipped",
     "unit-test:node": "echo skipped",
-    "unit-test": "npm run unit-test:node && npm run unit-test:browser"
+    "unit-test": "npm run unit-test:node && npm run unit-test:browser",
+    "remove-modules": "rimraf node_modules package-lock.json"
   },
   "sideEffects": false
 }
